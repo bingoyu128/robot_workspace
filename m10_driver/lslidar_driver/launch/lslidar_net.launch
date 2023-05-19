@@ -12,8 +12,8 @@
     <param name="group_ip" value="224.1.1.2"/>                      #组播ip。
     
     <param name="scan_topic" value="scan"/>                         #设置激光数据topic名称
-    <param name="angle_disable_min" value="0.0"/>                   #角度裁剪开始值
-    <param name="angle_disable_max" value="0.0"/>                   #角度裁剪结束值
+    <param name="angle_disable_min" value="120.0"/>                   #角度裁剪开始值
+    <param name="angle_disable_max" value="250.0"/>                   #角度裁剪结束值
     <param name="min_range" value="0"/>                             #雷达接收距离最小值
     <param name="max_range" value="100.0"/>                         #雷达接收距离最大值
     <param name="use_gps_ts" value="false"/>                        #雷达是否使用GPS授时

@@ -1,0 +1,28 @@
+# obstacle_range: 6.0
+# raytrace_range: 6.0
+# robot_radius: 0.30
+# inflation_radius: 0.15
+# cost_scaling_factor: 10.0
+# observation_sources: scan_filtered
+# scan_filtered: {
+#     sensor_frame: base_footprint, 
+#     observation_persistence: 0.0, 
+#     max_obstacle_height: 1.5, 
+#     min_obstacle_height: 0.0, 
+#     data_type: LaserScan,
+#     topic: /scan_filtered, 
+#     marking: true, 
+#     clearing: true
+#     }
+
+
+
+obstacle_range: 6.0 #最大障碍物检测范围
+raytrace_range: 6.0 #检测自由空间的最大范围
+# footprint: [[0.20, 0.20], [0.08, -0.08], [-0.08, -0.08], [-0.08, 0.08]] #机器人为矩形，设置矩形的四个点
+robot_radius: 0.30
+inflation_radius: 0.2 #膨胀层半径
+cost_scaling_factor: 10.0
+observation_sources: laser_scan_sensor
+laser_scan_sensor: {sensor_frame: base_scan, data_type: LaserScan, topic: /scan, marking: true, clearing: true}
+

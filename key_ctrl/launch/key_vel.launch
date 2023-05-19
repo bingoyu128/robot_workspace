@@ -1,0 +1,5 @@
+<launch>
+
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find key_ctrl)/default.rviz" output="screen"/>      #雷达点云配置
+<node name="key_vel" pkg="key_ctrl" type="key_ctrl_node" output="screen"/>      #雷达点云配置
+</launch>

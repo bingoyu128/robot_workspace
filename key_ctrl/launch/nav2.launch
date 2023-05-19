@@ -1,0 +1,35 @@
+<launch>
+
+  
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find key_ctrl)/maps/map.yaml"/>
+
+  <!--- Run AMCL -->
+  <include file="$(find key_ctrl)/nav_lidar/base_move_cfg1/amcl_diff.launch" />
+
+  <!--- Run move base -->
+  <!-- wpb_home_tutorials -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base"  output="screen">
+    <rosparam file="$(find key_ctrl)/nav_lidar/base_move_cfg1/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find key_ctrl)/nav_lidar/base_move_cfg1/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find key_ctrl)/nav_lidar/base_move_cfg1/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find key_ctrl)/nav_lidar/base_move_cfg1/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find key_ctrl)/nav_lidar/base_move_cfg1/dwa_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find key_ctrl)/nav_lidar/base_move_cfg1/move_base_params.yaml" command="load" />
+  </node>
+
+  <!-- RViz and TF tree -->
+  <!-- <arg name="model" default="$(find wpb_home_bringup)/urdf/wpb_home.urdf"/>
+  <arg name="gui" default="false" /> -->
+  <arg name="rvizconfig" default="$(find key_ctrl)/rviz/nav.rviz" />
+
+  <!-- <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+  <param name="use_gui" value="$(arg gui)"/> -->
+
+  <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+    <rosparam command="load" file="$(find wpb_home_bringup)/config/wpb_home.yaml" />
+  </node> -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+</launch>

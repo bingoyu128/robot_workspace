@@ -1,0 +1,6 @@
+<launch>
+ <include file="$(find lslidar_driver)/launch/lslidar_net.launch" />
+ <include file="$(find base_control)/launch/base_control.launch" />
+</launch>
+
+ 

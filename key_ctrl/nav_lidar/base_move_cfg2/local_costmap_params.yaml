@@ -1,0 +1,33 @@
+# local_costmap:
+#   global_frame: odom
+#   robot_base_frame: base_footprint
+#   update_frequency: 5.0
+#   publish_frequency: 3.0
+#   rolling_window: true
+#   width: 3.0
+#   height: 3.0
+#   resolution: 0.05
+#   transform_tolerance: 0.1
+#   plugins:
+#     - {name: static_layer,    type: "costmap_2d::StaticLayer"}
+#     - {name: obstacle_layer,  type: "costmap_2d::ObstacleLayer"}
+#     - {name: inflation_layer, type: "costmap_2d::InflationLayer"}
+local_costmap:
+  global_frame: odom #本地代价地图参考系为odom
+  robot_base_frame: base_footprint #机器人的base_frame为base_footprint
+  transform_tolerance: 1
+
+  update_frequency: 5 #地图更新频率
+  publish_frequency: 2 #rviz代价地图发布可视化信息的频率
+  
+  
+  static_map: false  #本地代价地图会不断的更新地图，所以这里设置为false
+  rolling_window: true  #设置滚动窗口，使得机器人始终在窗体中心位置
+  width: 3.0 #代价地图的宽度
+  height: 3.0  #代价地图的长度
+  resolution: 0.05 #代价地图的分辨率
+  map_type: costmap
+
+  plugins:
+    - {name: obstacle_layer, type: "costmap_2d::ObstacleLayer"}
+    - {name: local_inflation_layer, type: "costmap_2d::InflationLayer"}
